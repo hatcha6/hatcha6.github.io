@@ -1,0 +1,502 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Modern sportswear landing page inspiring performance and style." />
+        <title>Design 1: Modern Look</title>
+        <link href="assets/css/styles.output.css" rel="stylesheet" />
+        <!-- Removed Bootstrap and jQuery assets -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
+        <style>
+            /* Base Styles */
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+            /* Hero Section */
+            .hero {
+                background: url("https://static.vecteezy.com/system/resources/previews/011/442/806/non_2x/3d-football-stadium-with-soccer-goal-front-view-template-for-your-design-vector.jpg")
+                    no-repeat center center;
+                background-size: cover;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                position: relative;
+            }
+            /* Transparent Header over Hero */
+            header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10;
+                padding: 1.5rem 0;
+                background: rgba(0, 0, 0, 0.5); /* overall header background with opacity */
+                backdrop-filter: blur(5px);
+            }
+            header .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            header a, header h1 {
+                color: white;
+                text-decoration: none;
+            }
+            header a:hover {
+                text-decoration: underline;
+            }
+            /* Parallax Section */
+            .parallax {
+                background: url("https://upload.wikimedia.org/wikipedia/commons/4/45/Football_field.svg")
+                    no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                background-size: cover;
+                min-height: 100vh;
+                padding: 4rem 1rem;
+                color: white;
+            }
+            /* Product Cards in Parallax */
+            .product-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            /* Updated product section styles for more pop */
+            .product-card {
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 8px;
+                overflow: hidden;
+                transition: transform 0.3s, box-shadow 0.3s;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+                position: relative; /* enable overlay */
+            }
+            .product-card:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+            }
+            .product-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            .product-card:hover::before {
+                opacity: 1;
+            }
+            .product-info {
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.6);
+                transition: background 0.3s;
+                position: relative;
+                z-index: 1;
+            }
+            .product-card:hover .product-info {
+                background: rgba(0, 0, 0, 0.8);
+            }
+            .product-title {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                letter-spacing: 0.5px;
+            }
+            .product-price {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            /* Players Section updated background */
+            #players {
+                padding: 2rem 1rem;
+                background: url("https://png.pngtree.com/background/20250106/original/pngtree-elevated-view-of-a-football-stadium-a-stunning-3d-render-depicting-picture-image_13318487.jpg") no-repeat center center;
+                background-size: cover;
+            }
+            /* Footer */
+            footer {
+                background-color: #0b3;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+            }
+            /* New fixed size for player cards */
+            .fixed-size {
+                width: 300px;
+                height: 400px;
+            }
+            /* Begin fut-player-card styles (employee code) */
+            .fut-player-card {
+            	position: relative;
+            	width: 300px;
+            	height: 303px;
+            	background-image: url(assets/card.png);
+            	background-position: center center;
+            	background-size: 100% 100%;
+            	background-repeat: no-repeat;
+            	padding: 3.8rem 0;
+            	z-index: 2;
+            	transition: 200ms ease-in;
+            }
+            .fut-player-card .player-card-top {
+            	position: relative;
+            	display: flex;
+            	color: #e9cc74;
+            	padding: 0 1.5rem;
+            }
+            .fut-player-card .player-card-top .player-master-info {
+            	position: absolute;
+            	line-height: 2.2rem;
+            	font-weight: 300;
+            	padding: 1.5rem 0;
+            	text-transform: uppercase;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-rating {
+            	font-size: 2rem;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-position {
+            	font-size: 1.4rem;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-nation {
+            	display: block;
+            	width: 2rem;
+            	height: 25px;
+            	margin: 0.3rem 0;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-nation img {
+            	width: 100%;
+            	height: 100%;
+            	object-fit: contain;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-club {
+            	display: block;
+            	width: 2.1rem;
+            	height: 40px;
+            }
+            .fut-player-card .player-card-top .player-master-info .player-club img {
+            	width: 100%;
+            	height: 100%;
+            	object-fit: contain;
+            }
+            .fut-player-card .player-card-top .player-picture {
+            	width: 200px;
+            	height: 200px;
+            	margin: 0 auto;
+            	overflow: hidden;
+            }
+            .fut-player-card .player-card-top .player-picture img {
+            	width: 100%;
+            	height: 100%;
+            	object-fit: contain;
+            	position: relative;
+            	right: -1.5rem;
+            	bottom: 0;
+            }
+            .fut-player-card .player-card-top .player-picture .player-extra {
+            	position: absolute;
+            	right: 0;
+            	bottom: -0.5rem;
+            	font-size: 1rem;
+            	font-weight: 700;
+            	text-transform: uppercase;
+            	width: 100%;
+            	height: 2rem;
+            	padding: 0 1.5rem;
+            	text-align: right;
+            	background: none;
+            }
+            .fut-player-card .player-card-top .player-picture .player-extra span {
+            	margin-left: 0.6rem;
+            	text-shadow: 2px 2px #333;
+            }
+            .fut-player-card .player-card-bottom {
+            	position: relative;
+            }
+            .fut-player-card .player-card-bottom .player-info {
+            	display: block;
+            	padding: 0.3rem 0;
+            	color: #e9cc74;
+            	width: 90%;
+            	margin: 0 auto;
+            	position: relative;
+            	z-index: 2;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-name {
+            	width: 100%;
+            	display: block;
+            	text-align: center;
+            	font-size: 1.6rem;
+            	text-transform: uppercase;
+            	/* border-bottom: 2px solid rgba(233, 204, 116, 0.1); */
+            	padding-bottom: 0.3rem;
+            	overflow: hidden;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-name span {
+            	display: block;
+            	text-shadow: 2px 2px #111;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features {
+            	margin: 0.5rem auto;
+            	display: flex;
+            	justify-content: center;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features .player-features-col {
+            	border-right: 2px solid rgba(233, 204, 116, 0.1);
+            	padding: 0 2.3rem;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span {
+            	display: flex;
+            	font-size: 1.2rem;
+            	text-transform: uppercase;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span .player-feature-value {
+            	margin-right: 0.3rem;
+            	font-weight: 700;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features .player-features-col span .player-feature-title {
+            	font-weight: 300;
+            }
+            .fut-player-card .player-card-bottom .player-info .player-features .player-features-col:last-child {
+            	border: 0;
+            }
+            /* End fut-player-card styles */
+        </style>
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <!-- Header Blended on Top of Hero. -->
+        <header>
+            <div
+                class="container mx-auto px-4 flex justify-between items-center"
+            >
+                <div class="flex items-center">
+                    <img src="https://pngimg.com/d/nike_PNG4.png" alt="Company Logo" class="h-10 mr-2" />
+                    <h1 class="text-4xl font-bold">Name</h1>
+                </div>
+                <nav>
+                    <ul class="flex space-x-4">
+                        <li><a href="index.html" class="menu-item">العربية</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="text-center px-4">
+                    <h2 class="text-5xl font-bold mb-4">
+                        Your Catchy Headline
+                    </h2>
+                    <p class="text-xl mb-8">
+                        Experience our modern and innovative design with a look
+                        that captivates.
+                    </p>
+                    <a
+                        href="#products"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded"
+                        >Get Started</a
+                    >
+                </div>
+            </section>
+            <!-- Parallax Section with Products -->
+            <section id="products" class="parallax">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center">
+                        Discover Our Exclusive Products
+                    </h2>
+                    <p class="text-center text-xl mt-2">
+                        Handcrafted sportswear designed for champions.
+                    </p>
+                    <div class="product-grid">
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <img loading="lazy"
+                                src="https://image.made-in-china.com/2f0j00GqLcZjktfibA/Nike-Vapor-15-Elite-Football-Shoes-Soccer-Cleats-White.webp"
+                                alt="Product 1"
+                                class="product-image"
+                            />
+                            <div class="product-info">
+                                <h3 class="product-title">
+                                    Ultra Performance Kit
+                                </h3>
+                                <!-- <p class="product-price">$89.99</p> -->
+                            </div>
+                        </div>
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <img loading="lazy"
+                                src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1000,h_1000/global/107931/01/sv01/fnd/SEA/fmt/png/FUTURE-7-MATCH-FG/AG-Football-Boots"
+                                alt="Product 2"
+                                class="product-image"
+                            />
+                            <div class="product-info">
+                                <h3 class="product-title">Pro Style Jersey</h3>
+                                <!-- <p class="product-price">$59.99</p> -->
+                            </div>
+                        </div>
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <img loading="lazy"
+                                src="https://www.tracerindia.com/cdn/shop/files/1_21f162dc-6c02-4644-a591-f9c1b530b3aa.jpg?v=1725712616"
+                                alt="Product 3"
+                                class="product-image"
+                            />
+                            <div class="product-info">
+                                <h3 class="product-title">Champion Sneakers</h3>
+                                <!-- <p class="product-price">$129.99</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Players Section updated fut-player-card container -->
+            <section id="players" class="p-8">
+                <div class="container mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-8 text-white">
+                        Our Players
+                    </h2>
+                    <div class="flex flex-wrap justify-center">
+                        <!-- fut-player-card instance 1 -->
+                        <div class="fut-player-card m-3">
+                        	<div class="player-card-top">
+                        		<div class="player-master-info">
+                        			<div class="player-rating">
+                        				<span>97</span>
+                        			</div>
+                        			<div class="player-position">
+                        				<span>RW</span>
+                        			</div>
+                        			<div class="player-nation">
+                        				<img src="https://selimdoyranli.com/cdn/fut-player-card/img/argentina.svg" alt="Argentina" draggable="false"/>
+                        			</div>
+                        			<div class="player-club">
+                        				<img src="https://selimdoyranli.com/cdn/fut-player-card/img/barcelona.svg" alt="Barcelona" draggable="false"/>
+                        			</div>
+                        		</div>
+                        		<div class="player-picture">
+                        			<img src="https://selimdoyranli.com/cdn/fut-player-card/img/messi.png" alt="Messi" draggable="false"/>
+                        		</div>
+                        	</div>
+                        	<div class="player-card-bottom">
+                        		<div class="player-info">
+                        			<div class="player-name">
+                        				<span>MESSI</span>
+                        			</div>
+                        			<!-- <div class="player-features">
+                        				<div class="player-features-col">
+                        					<span>
+                        						<div class="player-feature-value">97</div>
+                        						<div class="player-feature-title">PAC</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">95</div>
+                        						<div class="player-feature-title">SHO</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">94</div>
+                        						<div class="player-feature-title">PAS</div>
+                        					</span>
+                        				</div>
+                        				<div class="player-features-col">
+                        					<span>
+                        						<div class="player-feature-value">99</div>
+                        						<div class="player-feature-title">DRI</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">35</div>
+                        						<div class="player-feature-title">DEF</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">68</div>
+                        						<div class="player-feature-title">PHY</div>
+                        					</span>
+                        				</div>
+                        			</div> -->
+                        		</div>
+                        	</div>
+                        </div>
+                        <!-- You can replicate additional fut-player-card blocks as needed -->
+                        <div class="fut-player-card m-3">
+                        	<div class="player-card-top">
+                        		<div class="player-master-info">
+                        			<div class="player-rating">
+                        				<span>97</span>
+                        			</div>
+                        			<div class="player-position">
+                        				<span>RW</span>
+                        			</div>
+                        			<div class="player-nation">
+                        				<img src="https://cdn.britannica.com/37/3037-050-AF128FD1/Flag-Libya.jpg" alt="Argentina" draggable="false"/>
+                        			</div>
+                        			<div class="player-club">
+                        				<img src="https://ruknya.com/storage/app/uploads/public/66d/9e1/d86/66d9e1d865faa816536265.png" alt="Barcelona" draggable="false"/>
+                        			</div>
+                        		</div>
+                        		<div class="player-picture">
+                        			<img src="assets/mouaid2.png" alt="Messi" draggable="false"/>
+                        		</div>
+                        	</div>
+                        	<div class="player-card-bottom">
+                        		<div class="player-info">
+                        			<div class="player-name">
+                        				<span>ELLAFI</span>
+                        			</div>
+                        			<!-- <div class="player-features">
+                        				<div class="player-features-col">
+                        					<span>
+                        						<div class="player-feature-value">97</div>
+                        						<div class="player-feature-title">PAC</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">95</div>
+                        						<div class="player-feature-title">SHO</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">94</div>
+                        						<div class="player-feature-title">PAS</div>
+                        					</span>
+                        				</div>
+                        				<div class="player-features-col">
+                        					<span>
+                        						<div class="player-feature-value">99</div>
+                        						<div class="player-feature-title">DRI</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">35</div>
+                        						<div class="player-feature-title">DEF</div>
+                        					</span>
+                        					<span>
+                        						<div class="player-feature-value">68</div>
+                        						<div class="player-feature-title">PHY</div>
+                        					</span>
+                        				</div>
+                        			</div> -->
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer>
+            <div class="container mx-auto px-4">
+                <!-- New social media row -->
+                <div class="flex justify-center space-x-4 mb-4">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="h-6">
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-6">
+                    </a>
+                </div>
+                <p>&copy; 2025 Your Company. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>
