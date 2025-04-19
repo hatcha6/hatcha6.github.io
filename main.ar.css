@@ -183,7 +183,7 @@ body.no-scroll {
 }
 
 section {
-    padding: 60px 20px;
+    padding: 30px 20px; /* Updated padding */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -205,7 +205,7 @@ section {
 .contact p {
     font-size: 1.1rem;
     color: #666;
-    text-align: start;
+    text-align: right; /* Changed from start to right for RTL */
     margin: 0px auto 20px;
 }
 
@@ -394,13 +394,17 @@ section {
     .about p {
         width: 100%;
     }
+
+    .tab-pane-content ul {
+        text-align: right; /* Keep list text right-aligned for RTL */
+        display: inline-block; /* Adjust width */
+    }
 }
 
 .products h2 {
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -469,6 +473,7 @@ section {
     margin: 5px; /* Add gap between items */
     max-width: 300px; /* Max width for each item */
     min-height: 300px; /* Ensure consistent height */
+    border: 1px solid #ddd; /* Add a thin border */
 }
 
 .product-info {
@@ -578,7 +583,7 @@ section {
 
     svg {
         width: 150%;
-        transform: translateX(10%);
+        transform: translateX(-20%); /* Adjusted transform to match main.css */
     }
 }
 
