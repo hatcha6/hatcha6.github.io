@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #333;
+    --accent-color: #2E8B57;
+    /* Sea Green */
+    --accent-hover: #246b43;
+    --secondary-bg: #e0f2f1;
+    /* Light teal */
+}
+
+/* Custom Header for Al-Alamiyah */
+header {
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1581578731117-104f2a863a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    /* Cleaning image */
+}
+
+.hero .btn {
+    background-color: var(--accent-color);
+}
+
+.hero .btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.service-icon {
+    color: var(--accent-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+}

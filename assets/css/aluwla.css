@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #333;
+    --accent-color: #D4AF37;
+    /* Gold */
+    --accent-hover: #b8962c;
+    --secondary-bg: #fff8e1;
+    /* Light yellow/cream */
+}
+
+/* Custom Header for Al-Ula */
+header {
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    /* Catering image */
+}
+
+.hero .btn {
+    background-color: var(--accent-color);
+}
+
+.hero .btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.service-icon {
+    color: var(--accent-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+}
